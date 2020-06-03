@@ -1,6 +1,5 @@
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
-import fetch from 'isomorphic-fetch';
 
 import {
 	parseResponseAndNormalizeError,
@@ -46,7 +45,7 @@ const fetchHandler = ( nextOptions ) => {
 		headers[ 'Content-Type' ] = 'application/json';
 	}
 
-	const responsePromise = fetch( url || path, {
+	const responsePromise = globalThis.fetch( url || path, {
 		...DEFAULT_OPTIONS,
 		...remainingOptions,
 		body,
