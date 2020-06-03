@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
+import json from '@rollup/plugin-json';
 import injectProcessEnv from 'rollup-plugin-inject-process-env';
 import pkg from './package.json';
 
@@ -11,6 +12,7 @@ const config = {
 	plugins: [
 		resolve( { extensions } ),
 		commonjs(),
+		json(),
 		injectProcessEnv( {
 			NODE_ENV: process.env.NODE_ENV,
 		} ),
