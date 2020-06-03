@@ -1,15 +1,11 @@
-'use strict';
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var url = _interopDefault(require('url'));
-var http = _interopDefault(require('http'));
-var https = _interopDefault(require('https'));
-var zlib = _interopDefault(require('zlib'));
-var stream = _interopDefault(require('stream'));
-var buffer = _interopDefault(require('buffer'));
-var string_decoder = _interopDefault(require('string_decoder'));
-var util = _interopDefault(require('util'));
+import url from 'url';
+import http from 'http';
+import https from 'https';
+import zlib from 'zlib';
+import stream from 'stream';
+import buffer from 'buffer';
+import string_decoder from 'string_decoder';
+import util from 'util';
 
 (function() {
     const env = {};
@@ -18442,4 +18438,4 @@ var fetchHandler$1 = function fetchHandler(nextOptions) {
 
 apiFetch.setFetchHandler(fetchHandler$1);
 
-module.exports = apiFetch;
+export default apiFetch;

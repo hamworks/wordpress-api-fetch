@@ -24,8 +24,12 @@ const config = {
 	],
 	output: [
 		{
-			file: pkg.main,
+			file: pkg.module,
 			format: 'es',
+		},
+		{
+			file: pkg.main,
+			format: 'cjs',
 		},
 	],
 };
