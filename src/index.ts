@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import fetchAllMiddleware from './middlewares/fetch-all-middleware.js';
 
 import {
 	parseResponseAndNormalizeError,
@@ -12,6 +13,7 @@ const DEFAULT_HEADERS = {
 	//
 	// See: https://core.trac.wordpress.org/ticket/44534
 	Accept: 'application/json, */*;q=0.1',
+	'Access-Control-Request-Headers': 'X-WP-Total, X-WP-TotalPages, link',
 };
 
 /**
@@ -77,4 +79,6 @@ const fetchHandler = ( nextOptions ) => {
 	);
 };
 apiFetch.setFetchHandler( fetchHandler );
+// @ts-ignore
+apiFetch.fetchAllMiddleware = fetchAllMiddleware;
 export default apiFetch;

@@ -18,6 +18,7 @@ const config = {
 		} ),
 		babel( {
 			extensions,
+			inputSourceMap: true,
 			babelHelpers: 'runtime',
 			include: [ 'src/**/*' ],
 		} ),
