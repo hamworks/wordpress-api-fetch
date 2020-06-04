@@ -39,6 +39,9 @@
         "rollup-plugin-inject-process-env": "^1.2.0",
         "typescript": "^3.9.3"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "release-it": {
         "hooks": {
             "before:bump": "npm run build"
