@@ -2,7 +2,7 @@
 
 > Customized [@wordpress/api-fetch](https://developer.wordpress.org/block-editor/packages/packages-api-fetch/) 
 
-
+use `globalThis.fetch` .
 
 ## Installation
 
