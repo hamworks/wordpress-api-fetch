@@ -1,4 +1,4 @@
-# @team-hamworks/wordpress-api-fetch
+# @hamworks/wordpress-api-fetch
 
 > Customized [@wordpress/api-fetch](https://developer.wordpress.org/block-editor/packages/packages-api-fetch/) 
 
@@ -9,7 +9,7 @@ use `globalThis.fetch` .
 Install the module
 
 ```bash
-npm install @team-hamworks/wordpress-api-fetch --save
+npm install @hamworks/wordpress-api-fetch --save
 ```
 
 ## Usage
