@@ -1,6 +1,6 @@
 # @hamworks/wordpress-api-fetch
 
-> Customized [@wordpress/api-fetch](https://developer.wordpress.org/block-editor/packages/packages-api-fetch/) 
+Customized [@wordpress/api-fetch](https://developer.wordpress.org/block-editor/packages/packages-api-fetch/) 
 
 use `globalThis.fetch` .
 
@@ -37,4 +37,17 @@ console.log( posts )
 import apiFetch from 'https://cdn.pika.dev/@hamworks/wordpress-api-fetch';
 const posts = await apiFetch( { path: '/wp/v2/posts' } )
 console.log( posts )
+```
+
+## Middlewares
+
+### fetchAllInParallelMiddleware
+
+A modification of [fetchAllMiddleware](https://github.com/WordPress/gutenberg/blob/master/packages/api-fetch/src/middlewares/fetch-all-middleware.js)  to perform requests in parallel.
+
+```js
+import apiFetch from 'https://cdn.pika.dev/@hamworks/wordpress-api-fetch';
+apiFetch.use( apiFetch.fetchAllInParallelMiddleware );
+const posts = await apiFetch( { path: '/wp/v2/posts?per_page=-1' }, { mode: 'cors'} );
+console.log(posts);
 ```
