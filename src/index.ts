@@ -13,7 +13,6 @@ const DEFAULT_HEADERS = {
 	//
 	// See: https://core.trac.wordpress.org/ticket/44534
 	Accept: 'application/json, */*;q=0.1',
-	'Access-Control-Request-Headers': 'X-WP-Total, X-WP-TotalPages, link',
 };
 
 /**
