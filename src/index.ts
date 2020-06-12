@@ -79,5 +79,5 @@ const fetchHandler = ( nextOptions ) => {
 };
 apiFetch.setFetchHandler( fetchHandler );
 // @ts-ignore
-apiFetch.fetchAllMiddleware = fetchAllMiddleware;
+apiFetch.fetchAllInParallelMiddleware = fetchAllMiddleware;
 export default apiFetch;
