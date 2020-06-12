@@ -29,3 +29,12 @@ let posts = await apiFetch( {
 } )
 console.log( posts )
 ```
+
+
+### ES Modules
+
+```js
+import apiFetch from 'https://cdn.pika.dev/@hamworks/wordpress-api-fetch';
+const posts = await apiFetch( { path: '/wp/v2/posts' } )
+console.log( posts )
+```
