@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import apiFetch from '@wordpress/api-fetch';
+import apiFetch, { APIFetchOptions } from '@wordpress/api-fetch';
+import { applyFilters } from '@wordpress/hooks';
 import fetchAllMiddleware from './middlewares/fetch-all-middleware.js';
 
 import {
@@ -15,16 +16,6 @@ const DEFAULT_HEADERS = {
 	Accept: 'application/json, */*;q=0.1',
 };
 
-/**
- * Default set of fetch option values which should be sent with every request
- * unless explicitly provided through apiFetch options.
- *
- * @type {Object}
- */
-const DEFAULT_OPTIONS = {
-	credentials: 'include',
-};
-
 const checkStatus = ( response ) => {
 	if ( response.status >= 200 && response.status < 300 ) {
 		return response;
@@ -34,7 +25,17 @@ const checkStatus = ( response ) => {
 };
 
 const fetchHandler = ( nextOptions ) => {
-	const { url, path, data, parse = true, ...remainingOptions } = nextOptions;
+	const filteredOptions = applyFilters< APIFetchOptions >(
+		'apiFetchOptions',
+		nextOptions
+	);
+	const {
+		url,
+		path,
+		data,
+		parse = true,
+		...remainingOptions
+	} = filteredOptions;
 	let { body, headers } = nextOptions;
 
 	// Merge explicitly-provided headers with default values.
@@ -47,7 +48,9 @@ const fetchHandler = ( nextOptions ) => {
 	}
 
 	const responsePromise = globalThis.fetch( url || path, {
-		...DEFAULT_OPTIONS,
+		...{
+			credentials: 'include',
+		},
 		...remainingOptions,
 		body,
 		headers,
@@ -78,6 +81,7 @@ const fetchHandler = ( nextOptions ) => {
 	);
 };
 apiFetch.setFetchHandler( fetchHandler );
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 apiFetch.fetchAllInParallelMiddleware = fetchAllMiddleware;
 export default apiFetch;
