@@ -1,10 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultConfig = require( '@wordpress/scripts/config/.eslintrc.js' );
 module.exports = {
 	...defaultConfig,
-	parser: "@typescript-eslint/parser",
+	parser: '@typescript-eslint/parser',
 	extends: [
 		...defaultConfig.extends,
-		"plugin:@typescript-eslint/eslint-recommended",
-		"plugin:@typescript-eslint/recommended",
+		'plugin:@typescript-eslint/eslint-recommended',
+		'plugin:@typescript-eslint/recommended',
 	],
 };
